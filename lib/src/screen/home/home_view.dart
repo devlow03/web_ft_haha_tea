@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Obx(() {
         return ListView(
+          physics: AlwaysScrollableScrollPhysics(),
           children: [
             CarouselSlider.builder(
               itemCount: ((logic.getBannerRsp.value?.banner?.length ?? 0)/2).round(),
@@ -34,11 +35,11 @@ class HomePage extends StatelessWidget {
                 autoPlay: true,
                 autoPlayInterval: Duration(seconds: 7),
                 // enlargeCenterPage: true,
-
+        
                 onPageChanged: (index, reason) {
                   logic.activeIndex.value = index;
                 },
-
+        
                 viewportFraction: 1,
               ),
               itemBuilder: (context, index, realIndex) {
@@ -60,6 +61,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
               child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: logic.getProductRsp.value?.products?.length ?? 0,
                 itemBuilder: (context, index) {
@@ -74,7 +76,7 @@ class HomePage extends StatelessWidget {
                   );
                 },
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-
+        
                   crossAxisCount: itemCount,
                   crossAxisSpacing: 15,
                   mainAxisSpacing: 15,
