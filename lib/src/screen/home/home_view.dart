@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                 viewportFraction: 1,
               ),
               itemBuilder: (context, index, realIndex) {
-                final int first = index * 2;
+                final int first =  index * 2;
                 final int second = first + 1;
                 return Row(
                   children: [first, second].map((idx){
